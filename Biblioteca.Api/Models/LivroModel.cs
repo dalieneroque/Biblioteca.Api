@@ -1,14 +1,14 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Biblioteca.Api.Models
+namespace Biblioteca_Api.Models
 {
-    public class Livro
+    public class LivroModel
     {
         public int Id { get; set; }
         public string Titulo { get; set; }
 
         [JsonIgnore] 
         //Um Livro tem um Autor
-        public Autor Autor { get; set; }
+        public AutorModel Autor { get; set; }
     }
 }

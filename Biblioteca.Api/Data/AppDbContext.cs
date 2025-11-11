@@ -1,7 +1,7 @@
-﻿using Biblioteca.Api.Models;
+﻿using Biblioteca_Api.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Biblioteca.Api.Data
+namespace Biblioteca_Api.Data
 {
     public class AppDbContext : DbContext //Classe que representa o contexto do banco de dados
     {
@@ -11,7 +11,7 @@ namespace Biblioteca.Api.Data
         }
 
         //Definindo as entidades do banco de dados
-        public DbSet<Autor> Autores { get; set; }
-        public DbSet<Livro> Livros { get; set; }
+        public DbSet<AutorModel> Autores { get; set; }
+        public DbSet<LivroModel> Livros { get; set; }
     }
 }

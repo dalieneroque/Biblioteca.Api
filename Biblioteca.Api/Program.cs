@@ -1,4 +1,5 @@
-using Biblioteca.Api.Data;
+using Biblioteca_Api.Data;
+using Biblioteca_Api.Services.Autor;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +10,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Registrando o AutorService para a interface IAutorInterface
+builder.Services.AddScoped<IAutorInterface, AutorService>();
 
 // Configurando o DbContext com a string de conexão do appsettings.json
 builder.Services.AddDbContext<AppDbContext>(options =>
