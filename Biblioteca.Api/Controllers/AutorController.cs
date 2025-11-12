@@ -1,6 +1,5 @@
 ﻿using Biblioteca_Api.Models;
 using Biblioteca_Api.Services.Autor;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Biblioteca.Api.Controllers
@@ -26,6 +25,13 @@ namespace Biblioteca.Api.Controllers
         public async Task<ActionResult<ResponseModel<AutorModel>>> BuscarAutorPorId(int idAutor)
         {
             var autor = await _autorInterface.BuscarAutorPorId(idAutor);
+            return Ok(autor);
+        }
+
+        [HttpGet("BuscarAutorPorIdLivro/{idLivro}")]
+        public async Task<ActionResult<ResponseModel<AutorModel>>> BuscarAutorPorIdLivro(int idLivro)
+        {
+            var autor = await _autorInterface.BuscarAutorPorIdLivro(idLivro);
             return Ok(autor);
         }
     }
