@@ -50,8 +50,8 @@ namespace Biblioteca.Api.Controllers
             return Ok(autores);
         }
 
-        [HttpDelete("DeletarAutor/{idAutor}")]
-        public async ActionResult<ResponseModel<AutorModel>> DeletarAutor(int idAutor)
+        [HttpDelete("DeletarAutor")]
+        public async Task<ActionResult<ResponseModel<List<AutorModel>>>> DeletarAutor(int idAutor)
         {
             var autores = await _autorInterface.DeletarAutor(idAutor);
             return Ok(autores);

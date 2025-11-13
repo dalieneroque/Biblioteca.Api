@@ -124,13 +124,14 @@ namespace Biblioteca_Api.Services.Autor
             return resposta;
         }
 
-        public async Task<ResponseModel<List<AutorModel>>> EditarAutor()
+        //Esse método edita os dados de um autor existente
+        public async Task<ResponseModel<List<AutorModel>>> EditarAutor(AutorEdicaoDto autorEdicaoDto)
         {
             ResponseModel<List<AutorModel>> resposta = new ResponseModel<List<AutorModel>>();
 
             try
             {
-                var autor = await _context.Autores.FirstOrDefaultAsync(autorBanco => autorBanco.Id == idAutor);
+                var autor = await _context.Autores.FirstOrDefaultAsync(autorBanco => autorBanco.Id == autorEdicaoDto.Id);
                 if (autor == null)
                 {
                     resposta.Mensagem = "Autor não encontrado.";
@@ -142,6 +143,7 @@ namespace Biblioteca_Api.Services.Autor
                 await _context.SaveChangesAsync();
                 resposta.Dados = await _context.Autores.ToListAsync();
                 resposta.Mensagem = "Autor editado com sucesso.";
+                resposta.Status = true;
                 return resposta;
             }
             catch (Exception ex)
@@ -151,9 +153,10 @@ namespace Biblioteca_Api.Services.Autor
                 return resposta;
             }
 
-
+            return resposta;
         }
 
+        //Esse método deleta um autor pelo seu ID
         public async Task<ResponseModel<List<AutorModel>>> DeletarAutor(int idAutor)
         {
             ResponseModel<List<AutorModel>> resposta = new ResponseModel<List<AutorModel>>();
