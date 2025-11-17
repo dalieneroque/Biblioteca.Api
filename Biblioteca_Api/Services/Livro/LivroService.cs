@@ -1,10 +1,18 @@
-﻿using Biblioteca_Api.Dto.Livro;
+﻿using Biblioteca_Api.Data;
+using Biblioteca_Api.Dto.Livro;
 using Biblioteca_Api.Models;
 
 namespace Biblioteca_Api.Services.Livro
 {
     public class LivroService : ILivroInterface
     {
+        private readonly AppDbContext _context;
+
+        public LivroService(AppDbContext context)
+        {
+            _context = context;
+        }
+
         public Task<ResponseModel<LivroModel>> BuscarLivroPorId(int idLivro)
         {
             throw new NotImplementedException();
