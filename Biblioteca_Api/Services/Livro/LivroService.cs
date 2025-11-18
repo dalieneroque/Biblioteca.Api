@@ -189,7 +189,7 @@ namespace Biblioteca_Api.Services.Livro
 
             try
             {
-                var livros = await _context.Livros.ToListAsync();
+                var livros = await _context.Livros.Include(l => l.Autor).ToListAsync();
 
                 resposta.Dados = livros;
                 resposta.Mensagem = "Livros listados com sucesso.";
